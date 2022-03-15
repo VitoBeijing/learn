@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <title>测试document.write脚本(limit)</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOMContentLoaded');
+    });
+    window.addEventListener('load', (event) => {
+      console.log('loaded');
+    });
+    window.loadScript = function(url, async) {
+      var po = document.createElement('script');
+      po.async = async;
+      po.src = url;
+      document.body.appendChild(po);
+    };
+    window.writeScript = function(url, type) {
+      document.write('<scr' + 'ipt '+ type +' src="'+ url + '"></scr' + 'ipt>');
+    };
+  </script>
+</head>
+
+<body>
+  <div>请打开【开发者工具】来查看日志</div>
+    <script src="/1.normal1.js?wait=200&url=%2F2.write1.js%3Fwait%3D100"></script>
+    <script src="/3.async1.js?wait=200&url=%2F4.write2.js%3Fwait%3D100" async></script>
+    <script src="/5.defer1.js?wait=200&url=%2F6.write3.js%3Fwait%3D100" defer></script>
+    <script>loadScript('/7.create1.js?wait=100&url=%2F8.write4.js%3Fwait%3D100', false);</script>
+    <script>
+      setTimeout(function() {
+        writeScript('/9.normal2.js?wait=200', '');
+      }, 300);
+    </script>
+  <div>HTML 应该解析结束了</div>
+</body>
+
+</html>

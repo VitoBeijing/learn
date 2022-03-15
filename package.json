@@ -1,0 +1,23 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "learn",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitoBeijing/learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitoBeijing/learn/issues"
+  },
+  "homepage": "https://github.com/VitoBeijing/learn#readme",
+  "dependencies": {
+    "@babel/parser": "^7.17.3",
+    "@babel/types": "^7.17.0"
+  }
+}

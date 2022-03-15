@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>测试defer脚本2</title>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOMContentLoaded');
+      });
+      window.addEventListener('load', (event) => {
+        console.log('loaded');
+      });
+    </script>
+  </head>
+  <body>
+    <div>请打开【开发者工具】来查看日志</div>
+    <script src="/1.normal1.js?wait=400"></script>
+    <script src="/2.defer1.js?wait=200" defer></script>
+    <script src="/3.async1.js?wait=600" async></script>
+    <script src="/4.defer2.js?wait=700" defer></script>
+    <script src="/5.normal2.js?wait=500"></script>
+    <div>HTML 应该解析结束了</div>
+  </body>
+</html>

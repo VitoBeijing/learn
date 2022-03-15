@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>测试document.write脚本</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOMContentLoaded');
+    });
+    window.addEventListener('load', (event) => {
+      console.log('loaded');
+    });
+    window.writeScript = function(url, type) {
+      document.write('<scr' + 'ipt '+ type +' src="'+ url + '"></scr' + 'ipt>');
+    };
+    window.waitTime = function(time) {
+      var start = new Date().getTime();
+      while (new Date().getTime() - start < time) {}
+      console.log('wait: ' + time);
+    };
+  </script>
+</head>
+
+<body>
+  <div>请打开【开发者工具】来查看日志</div>
+    <script src="/1.normal1.js?wait=1000"></script>
+    <script>
+      writeScript('/2.write-normal1.js?wait=500', '');
+      waitTime(600);
+      writeScript('/3.write-normal2.js?wait=500', '');
+      console.log('write end');
+    </script>
+    <script src="/4.normal3.js?wait=500"></script>
+  <div>HTML 应该解析结束了</div>
+</body>
+
+</html>

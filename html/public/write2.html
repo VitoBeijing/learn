@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <title>测试document.write脚本(async)</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOMContentLoaded');
+    });
+    window.addEventListener('load', (event) => {
+      console.log('loaded');
+    });
+    window.writeScript = function(url, type) {
+      document.write('<scr' + 'ipt '+ type +' src="'+ url + '"></scr' + 'ipt>');
+    };
+  </script>
+</head>
+
+<body>
+  <div>请打开【开发者工具】来查看日志</div>
+    <script>writeScript('/1.write-async1.js?wait=3000', 'async');</script>
+    <script src="/2.normal1.js?wait=500"></script>
+    <script>writeScript('/3.write-async2.js?wait=100', 'async');</script>
+    <script src="/4.normal2.js?wait=400"></script>
+  <div>HTML 应该解析结束了</div>
+</body>
+
+</html>

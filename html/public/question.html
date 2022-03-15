@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>问题脚本</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOMContentLoaded');
+    });
+    window.addEventListener('load', (event) => {
+      console.log('loaded');
+    });
+    window.loadScript = function(url, async) {
+      var po = document.createElement('script');
+      po.async = async;
+      po.src = url;
+      document.body.appendChild(po);
+    };
+    window.writeScript = function(url, type) {
+      document.write('<scr' + 'ipt '+ type +' src="'+ url + '"></scr' + 'ipt>');
+    };
+  </script>
+</head>
+
+<body>
+  <div>请打开【开发者工具】来查看日志</div>
+  <script src="/1.normal1.js?wait=500"></script>
+  <script src="/2.async1.js?wait=600" async></script>
+  <script src="/3.defer1.js?wait=500" defer></script>
+  <script>loadScript('/4.create1.js?wait=4000', false);</script>
+  <script src="/5.defer2.js?wait=1000&url=%2F6.write1.js%3Fwait%3D1000" defer></script>
+  <script>loadScript('/7.create2.js?wait=1000', false);</script>
+  <script>writeScript('/8.write-async1.js?wait=200', 'async');</script>
+  <div>HTML 应该解析结束了</div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+  <title>测试createElement脚本</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      console.log('DOMContentLoaded');
+    });
+    window.addEventListener('load', (event) => {
+      console.log('loaded');
+    });
+    window.loadScript = function(url, async) {
+      var po = document.createElement('script');
+      po.async = async;
+      po.src = url;
+      document.body.appendChild(po);
+    };
+  </script>
+</head>
+
+<body>
+  <div>请打开【开发者工具】来查看日志</div>
+  <script>loadScript('/1.create1.js?wait=3000', true);</script>
+  <script src="/2.normal1.js?wait=500"></script>
+  <script>loadScript('/3.create2.js?wait=100', true);</script>
+  <script src="/4.normal2.js?wait=700"></script>
+  <div>HTML 应该解析结束了</div>
+</body>
+
+</html>
