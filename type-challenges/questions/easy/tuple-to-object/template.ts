@@ -1,5 +1,5 @@
-type TupleToObject<T extends readonly any[]> = {
- [K in T[number]]: K
+type TupleToObject<T extends readonly (string | number | symbol)[]> = {
+    [P in T[number]]: P
 }
 // T[number] 遍历数组
 
