@@ -3,6 +3,7 @@ import type { Equal, Expect } from '@type-challenges/utils'
 // 在 TS 中，我们用 Promise 中的 T 来描述这个 Promise 返回的类型。
 // 请你实现一个类型，可以获取这个类型。
 
+// type MyAwaited<T extends Promise<unknown>> = T extends Promise<infer X> ? X extends Promise<unknown> ? MyAwaited<X> : X : X
 
 type X = Promise<string>
 type Y = Promise<{ field: number }>
