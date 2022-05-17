@@ -1,0 +1,1 @@
+type Pop<T extends unknown[]> = T extends [...infer U, infer P] ? [...U]: never;
