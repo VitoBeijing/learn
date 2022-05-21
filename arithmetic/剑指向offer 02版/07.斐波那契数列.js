@@ -12,5 +12,12 @@
  * @return {number}
  */
  var fib = function(n) {
+    const dp = [0, 1];
+    let r = 2;
+    while(r <= n) {
+        dp[r] = (dp[r - 1] + dp[r - 2]) % (1e9 + 7);
+        r++;
+    }
+    return dp[n]
 
 };
