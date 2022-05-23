@@ -7,3 +7,27 @@
 // 输入: 2
 // 输出: 1
 // 解释: 2 = 1 + 1, 1 × 1 = 1
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+ var cuttingRope = function(n) {
+    // 动态规划
+    let dp = new Array(n).fill(0);
+    dp[1] = 1;
+    dp[2] = 1;
+    dp[3] = 2;
+    // i表示长度
+    for(let i = 3; i <= n; i ++) {
+        // 一刀切多少
+        for(let j = 1; j < i - 1; j ++) {
+            // 切
+            // j * (i - j)
+            // 不切(至少切一刀)
+            // j * dp[i - j]
+            dp[i] = Math.max(dp[i] || 0, Math.max(j * (i-j), j * dp[i - j]))
+        }
+    }
+    return dp[n];
+};
